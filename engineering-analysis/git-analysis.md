@@ -1,51 +1,84 @@
-# git-analysis
+<skill>
+<name>git-analysis</name>
+<path>$CODEX_HOME/skills/git-analysis/SKILL.md</path>
+---
+name: git-analysis
+description: "Use when the task is centered on git history or changes: staged or unstaged diff review, recent commit analysis, author-filtered commit reports, commit message or branch name suggestion, PR title or PR body drafting, or repo-history-aligned wording for engineering artifacts."
+---
 
-## 역할
+# Git Change Analysis
 
-git diff, commit history, PR 문안, 리뷰 결과를 저장소의 실제 히스토리에 맞춰
-분석하고 정리하는 스킬입니다.
+This skill handles git-centric analysis and writing for Noah: diff review, commit and PR wording, and repo-history-aware change summaries.
 
-## 언제 쓰는가
+## When To Use
 
-- 변경사항을 검토할 때
-- staged 또는 unstaged diff를 리뷰할 때
-- 커밋 메시지, 브랜치 이름, PR 제목/본문을 쓸 때
-- 특정 작성자의 커밋 이력을 요약할 때
+Use this skill for requests such as:
 
-## 입력
+- "git changes 확인하고 리뷰하자"
+- "변경사항 봐줘"
+- "staged diff 리뷰해"
+- "$git-analysis 지난 커밋 이력을 확인해서 user.name eunwoo.park이 기여한 커밋 리포트를 제공해"
+- "커밋 메시지 추천해줘"
+- "git log 보고 커밋 문구 맞춰줘"
+- "PR 본문 작성해줘"
+- "PR 본문 히스토리 톤에 맞게 써줘"
 
-- 현재 git 상태
-- diff 또는 commit history
-- 작성하려는 산출물 종류
+## Core Workflow
 
-## 출력
+Before answering, inspect local git context first:
 
-- 리뷰 findings
-- commit/PR 초안
-- author-based commit report
+- `git status --short --branch`
+- `git diff --staged` or `git diff`
+- `git log --oneline -n 15`
 
-## 핵심 규칙
+Then:
 
-- 항상 `git status`, `git diff`, `git log`를 먼저 봅니다.
-- 리뷰와 글쓰기 작업을 분리합니다.
-- 리뷰는 findings-first로 정리합니다.
-- 커밋과 PR 문구는 저장소 히스토리 톤을 따릅니다.
+1. Separate code review from writing work.
+2. For review, default to findings-first output.
+3. For commit or PR text, mirror repo history instead of imposing generic conventions.
+4. Default to Korean for internal engineering writing unless the repo is clearly English-first.
+5. Separate observed facts from assumptions.
+6. Never imply validation that was not executed.
 
-## 관리 포인트
+## Commit History Report Rules
 
-- 사용하는 git 명령과 출력 형식이 현재 워크플로와 맞는지 점검합니다.
-- 저장소별 글쓰기 톤을 과도하게 일반화하지 않도록 주의합니다.
+When the user asks for a commit report, contribution summary, or author-based history analysis:
 
-## 실행 프롬프트
+- Identify whether the filter is based on `user.name`, author name, or author email.
+- Use git history commands that preserve evidence, such as author-filtered `git log` views.
+- Summarize both volume and substance:
+  - commit count and date range
+  - dominant areas or files touched
+  - notable themes or recurring work types
+  - representative commits worth highlighting
+- If the requested identity is ambiguous, say what exact filter was used.
+- Keep the report factual. Do not overstate impact beyond what the commit history supports.
 
-```text
-$git-analysis
+## Review Rules
 
-작업 유형: <diff 리뷰 / 커밋 메시지 / PR 본문 / 작성자별 커밋 리포트>
-대상 범위: <staged / unstaged / 최근 20개 커밋 / 특정 author>
-추가 요구: <예: findings-first, 한국어, 저장소 히스토리 톤 반영>
+- Read surrounding code, not only the diff.
+- Prioritize broken behavior, validation gaps, contract leaks, flaky tests, and regression risk.
+- Present findings first, ordered by severity.
+- Use absolute file references when possible.
+- Keep summaries brief and only after the findings.
 
-먼저 현재 git 상태와 관련 diff 또는 log를 확인한 뒤,
-작업 유형에 맞는 결과를 만들어줘.
-검증하지 않은 내용은 추정으로 분리해서 써줘.
-```
+## Writing Rules
+
+When drafting commit or PR text:
+
+- Inspect `git log` before writing.
+- Keep the tone formal and reviewer-friendly.
+- For PR bodies, prefer:
+  - 목표
+  - 변경사항
+  - 의도 또는 선택 이유
+  - 테스트 근거
+  - 리스크
+
+## Anti-Patterns
+
+- Do not write commit or PR text before checking repo history.
+- Do not give a review that is mostly summary.
+- Do not claim tests passed unless they were actually run.
+
+</skill>

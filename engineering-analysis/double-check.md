@@ -1,55 +1,52 @@
-# double-check
+<skill>
+<name>double-check</name>
+<path>$CODEX_HOME/skills/double-check/SKILL.md</path>
+---
+name: double-check
+description: "Use when the task is about execution-based verification: deciding what commands to run, running the smallest meaningful validation gate, summarizing what was confirmed by execution, or explicitly stating what was not run and why."
+---
 
-## 역할
+# Verification Gate
 
-실행 기반 검증을 위한 최소 의미 있는 게이트를 고르고, 실제로 무엇이
-확인되었는지 정직하게 보고하는 스킬입니다.
+This skill handles execution-backed validation for Noah: choose the right gate, run it when feasible, and report confirmed versus unverified status without bluffing.
 
-## 언제 쓰는가
+## When To Use
 
-- 변경 후 무엇을 검증해야 안전한지 판단할 때
-- 전체 테스트 대신 최소 고신호 검증만 돌리고 싶을 때
-- 실행하지 않은 항목을 명확히 구분해 마감해야 할 때
+Use this skill for requests such as:
 
-## 입력
+- "테스트코드 실행해서 확인했어?"
+- "검증하고 마무리하자"
+- "뭘 돌려야 안전한지 정리해줘"
+- "안 돌렸으면 안 돌렸다고 써"
+- "최소 검증 게이트로 확인해"
 
-- 변경 내용
-- 주요 리스크
-- 가능한 검증 명령
+## Core Workflow
 
-## 출력
+1. Choose the smallest meaningful command that validates the requested risk.
+2. Run execution-backed checks when feasible.
+3. If full validation is expensive, run the highest-signal subset.
+4. Report exactly what was confirmed by execution and what remains unverified.
 
-- 선택한 검증 게이트
-- 실행 결과
-- 확인된 것과 미확인 항목
-- 실행하지 않은 이유
+## Reporting Rules
 
-## 핵심 규칙
+- Distinguish clearly between:
+  - confirmed by execution
+  - inferred from code inspection
+  - not run
+- If something was not run, state exactly why.
+- Do not collapse partial verification into a full-pass statement.
+- Prefer concrete command names over vague statements like "checked" or "verified".
 
-- 가장 작은 의미 있는 검증부터 시작합니다.
-- 부분 검증을 전체 통과처럼 말하지 않습니다.
-- 실행 기반 확인과 코드 추론을 분리합니다.
+## Gate Selection Rules
 
-## 관리 포인트
+- Start with the command most directly tied to the changed risk.
+- Escalate to broader validation only when the narrow gate is insufficient.
+- If the default suite is untrustworthy, say so and explain the limitation.
 
-- 자주 쓰는 프로젝트별 검증 게이트가 바뀌면 예시나 기준도 갱신합니다.
-- 비용이 큰 검증과 빠른 검증의 우선순위 기준이 여전히 유효한지 봅니다.
+## Anti-Patterns
 
-## 실행 프롬프트
+- Do not imply that tests passed when nothing ran.
+- Do not run a broad expensive suite first when a narrower gate would answer the question.
+- Do not hide verification gaps in summary prose.
 
-```text
-$double-check
-
-변경 내용:
-<무엇을 바꿨는지>
-
-걱정되는 리스크:
-<예: 회귀 가능성, 빌드 깨짐, API 계약 변경>
-
-가능한 검증 수단:
-<예: 특정 테스트, lint, build, 수동 확인>
-
-이 상황에서 가장 작은 의미 있는 검증 게이트를 고르고,
-실행 가능한 것은 실행한 뒤,
-확인된 것 / 추정인 것 / 실행하지 않은 것을 명확히 나눠서 정리해줘.
-```
+</skill>

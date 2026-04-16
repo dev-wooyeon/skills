@@ -1,60 +1,207 @@
-# technical-writing-sentence-polish
+<skill>
+<name>technical-writing-sentence-polish</name>
+<path>$CODEX_HOME/skills/technical-writing-sentence-polish/SKILL.md</path>
+---
+name: technical-writing-sentence-polish
+description: Improve the clarity, brevity, and consistency of technical writing at the sentence level. Use when the user provides one or more sentences from a technical document and wants direct feedback plus a stronger final rewrite based on concision, reduced meta discourse, concrete wording, consistent terminology, and clear human subjects.
+---
 
-## 역할
+# Technical Writing Sentence Polish
 
-기술 문장을 더 짧고 명확하며 일관되게 다듬는 문장 단위 스킬입니다.
-문서 구조 변경보다 표현 개선에 집중합니다.
+## Purpose
 
-## 언제 쓰는가
+Refine technical sentences so they are easier to scan, easier to understand,
+and more actionable. Focus on sentence-level improvement, not document
+structure or conceptual expansion.
 
-- 문장이 길고 복잡해서 읽기 속도가 떨어질 때
-- 메타 표현이나 모호한 표현이 많을 때
-- 용어가 섞이거나 주체가 불분명할 때
+Typical inputs:
 
-## 입력
+- One sentence
+- A short paragraph
+- A list of awkward technical statements
+- Draft prose from a guide, tutorial, design note, or API document
 
-- 한 문장
-- 짧은 문단
-- 여러 개의 어색한 기술 문장
+## Core Principles
 
-## 출력
+Apply these five rules in order.
 
-- 문장 진단
-- 핵심 문제
-- 수정 방향
-- 다듬은 문장
+### 1. Keep only necessary information
 
-## 핵심 편집 원칙
+Make each sentence short and focused.
 
-- 필요한 정보만 남깁니다.
-- 메타 담화를 줄입니다.
-- 구체적이고 직접적으로 씁니다.
-- 용어를 일관되게 씁니다.
-- 독자나 개발자를 주체로 드러냅니다.
+Check for:
 
-## 관리 포인트
+- Sentences that are too long
+- Multiple ideas packed into one sentence
+- Clauses that do not change the reader's understanding
 
-- 문장 압축이 의미 손실로 이어지지 않는지 확인합니다.
-- 능동형 전환 기준과 용어 정규화 기준이 일관되게 유지되는지 봅니다.
+Recommended action:
 
-## 실행 프롬프트
+- Keep one main idea per sentence
+- Split long sentences when needed
+- Remove filler that does not add meaning
+
+### 2. Minimize meta discourse
+
+Remove comments about the writing itself when they do not help the reader.
+
+Check for:
+
+- "앞서 설명했듯이"
+- "여러분도 아시다시피"
+- "다음에서 살펴보겠습니다"
+- other phrases that talk around the content instead of delivering it
+
+Recommended action:
+
+- Delete meta framing unless it is needed for navigation
+- State the point directly
+
+### 3. Write concretely
+
+Prefer direct, specific wording over vague abstractions.
+
+Check for:
+
+- vague nouns such as "부분", "사항", "과정", "측면"
+- weak verbs
+- unclear instructions or outcomes
+
+Recommended action:
+
+- replace abstract nouns with concrete objects or actions
+- use verbs that show what the reader or system actually does
+- name the exact artifact, condition, or action when possible
+
+### 4. Stay consistent
+
+Use the same term for the same concept.
+
+Check for:
+
+- multiple names for one thing
+- inconsistent abbreviation handling
+- mixed translations or mixed borrowed terms
+
+Recommended action:
+
+- choose one preferred term and use it throughout
+- expand abbreviations on first mention if needed
+- keep capitalization and spelling stable
+
+### 5. Make the subject clear
+
+Show who acts.
+
+Check for:
+
+- passive voice that hides responsibility
+- sentences where the tool or system becomes the subject without reason
+- unclear actor in instructions
+
+Recommended action:
+
+- prefer active voice
+- make the developer, reader, or operator the subject when giving guidance
+- use the system as subject only when system behavior itself matters
+
+## Analysis Workflow
+
+Follow this workflow:
+
+1. Identify the sentence's main intent.
+2. Remove extra information or meta phrasing.
+3. Rewrite vague wording into concrete language.
+4. Normalize terms.
+5. Make the subject and action explicit.
+6. Return one best final rewrite.
+
+If several fixes are possible, combine them into one polished version instead
+of listing many alternatives.
+
+## What To Produce
+
+Respond in Korean unless the user requests another language.
+
+Always include:
+
+1. `문장 진단`
+2. `핵심 문제`
+3. `수정 방향`
+4. `다듬은 문장`
+
+### `문장 진단`
+
+Summarize the sentence quality in 1-3 short points.
+
+### `핵심 문제`
+
+Tie problems back to the five principles.
+
+Good examples:
+
+- "한 문장에 조건과 결과, 주의 사항이 함께 들어 있어 읽는 속도가 떨어집니다."
+- "메타 표현이 들어가 핵심 메시지 전달이 늦어집니다."
+- "주체가 빠져 있어 누가 무엇을 해야 하는지 바로 드러나지 않습니다."
+
+### `수정 방향`
+
+Explain what changed and why:
+
+- what to delete
+- what to split
+- which terms to normalize
+- how the subject became clearer
+
+### `다듬은 문장`
+
+Return one improved version by default.
+
+When the input is a paragraph, you may return multiple revised sentences, but
+still present them as one integrated rewrite.
+
+## Tone Rules
+
+- Prefer plain, direct technical prose
+- Avoid decorative transitions
+- Avoid vague encouragement or conversational filler
+- Keep instructions actionable
+- Preserve the original meaning unless the user asks for stronger reframing
+
+## Decision Rules
+
+Split a sentence when:
+
+- it contains more than one main action
+- it mixes cause, action, exception, and result in one line
+- the condition chain makes the main point hard to find
+
+Keep a sentence as one line when:
+
+- the action and condition are tightly coupled
+- splitting would make the flow choppy
+
+## Fast Heuristics
+
+- "정상적으로 응답을 받을 수 있습니다" -> replace with the exact outcome if
+  possible
+- "포함해야 정상적으로" -> prefer direct action plus result
+- long condition chains -> split into setup and result
+- passive voice -> rewrite with a clear actor
+- mixed terms -> choose one and normalize
+
+## Example Pattern
+
+Input:
 
 ```text
-$technical-writing-sentence-polish
-
-입력 문장:
-<다듬고 싶은 문장 또는 짧은 문단>
-
-용어 제약:
-<반드시 유지할 용어가 있으면 적기>
-
-톤 제약:
-<예: 기술 문서 톤, 짧고 단정하게>
-
-위 문장을 기준으로
-1. 문장 진단
-2. 핵심 문제
-3. 수정 방향
-4. 여러 개선 요소를 반영한 하나의 최종 문장
-형식으로 정리해줘.
+이 API를 호출할 때 요청 헤더와 인증 정보를 포함해야 정상적으로 응답을 받을 수 있습니다.
 ```
+
+Better:
+
+```text
+이 API를 호출할 때는 요청 헤더와 인증 정보를 함께 포함하세요. 그래야 서버가 요청을 인증하고 정상 응답을 반환합니다.
+```
+
+</skill>

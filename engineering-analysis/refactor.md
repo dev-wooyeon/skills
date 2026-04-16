@@ -1,57 +1,63 @@
-# refactor
+<skill>
+<name>refactor</name>
+<path>$CODEX_HOME/skills/refactor/SKILL.md</path>
+---
+name: refactor
+description: "Use when the task is about refactoring or structural cleanup: usage-path tracing, impact analysis, DDD or MSA boundary critique, external contract mapping, anti-corruption layer decisions, refactor sequencing, or migration and cleanup roadmaps."
+---
 
-## 역할
+# Refactor Workflow
 
-리팩터링이나 구조 정리를 시작하기 전에 사용 경로, 경계, 영향도, 계약 누수를
-먼저 추적하고 실행 가능한 순서로 바꾸는 스킬입니다.
+This skill handles structural analysis and refactoring strategy for Noah: trace where things are used, find coupling, critique boundaries, and turn cleanup into an executable sequence.
 
-## 언제 쓰는가
+## When To Use
 
-- 호출 경로나 사용 위치를 먼저 파악해야 할 때
-- DDD/MSA 관점에서 경계를 점검할 때
-- 외부 계약이 내부 모델로 새는지 확인할 때
-- 정리 로드맵이나 마이그레이션 순서를 짤 때
+Use this skill for requests such as:
 
-## 입력
+- "어디서 사용하는지 찾아"
+- "호출 경로 파악해"
+- "영향 분석해"
+- "이 구조가 DDD/MSA 관점에서 맞나?"
+- "외부 API 계약이 내부 모델에 새는지 봐줘"
+- "정리 로드맵 작성하자"
+- "마이그레이션 순서 짜자"
 
-- 현재 구조 또는 관련 코드
-- 리팩터링 대상
-- 제약 조건과 목표
+## Core Workflow
 
-## 출력
+1. Trace the current structure before proposing a refactor.
+2. Distinguish confirmed usage paths from likely usage paths.
+3. Evaluate ownership boundaries before implementation convenience.
+4. Identify where internal schema semantics leak into DTOs, status codes, events, or APIs.
+5. Turn conclusions into a concrete order of work.
 
-- 사용 경로와 영향 범위 요약
-- 구조적 문제 설명
-- 경계/번역 레이어 판단
-- 실행 순서가 있는 리팩터링 계획
+## Trace And Impact Rules
 
-## 핵심 규칙
+- Prefer real call paths over grep dumps.
+- Identify entry points, downstream consumers, persistence boundaries, and external contract surfaces.
+- Summarize impact so it can become a checklist or refactor plan.
 
-- 실제 호출 경로를 먼저 확인합니다.
-- 확인된 사실과 추정을 분리합니다.
-- 구현 편의보다 소유권 경계를 우선합니다.
-- 계획은 dependency와 risk 기준으로 순서화합니다.
+## Architecture Rules
 
-## 관리 포인트
+- Check whether the boundary owns the translation or merely renames leaked internals.
+- Prefer anti-corruption or translation layers when they preserve ownership clarity.
+- Call out hidden coupling across domains, services, or teams.
+- Frame tradeoffs in migration cost, responsibility separation, and future architecture constraints.
+- Avoid drifting into code changes unless the user asks for implementation options.
 
-- 현재 코드베이스 스타일과 용어에 맞게 경계 설명을 유지합니다.
-- 실행 가능한 단계로 분해된 계획을 계속 지향하는지 확인합니다.
+## Planning Rules
 
-## 실행 프롬프트
+- Sequence by dependency and risk reduction.
+- Prefer a plan that can be executed commit by commit.
+- For legacy cleanup, separate:
+  - discovery
+  - isolation
+  - migration
+  - verification
 
-```text
-$refactor
+## Anti-Patterns
 
-대상 코드 또는 모듈:
-<파일, 클래스, 기능, 경계>
+- Do not approve a design just because it is faster to ship.
+- Do not give a refactor plan without tracing current usage first.
+- Do not blur confirmed findings with assumptions.
 
-현재 고민:
-<예: 어디서 쓰는지 모르겠다 / 경계가 새고 있다 / 정리 순서를 정하고 싶다>
-
-제약 조건:
-<예: 외부 계약은 유지해야 함 / 점진적으로 옮겨야 함>
-
-먼저 현재 사용 경로와 영향 범위를 추적하고,
-그다음 구조적 문제와 경계 이슈를 설명한 뒤,
-실행 가능한 리팩터링 순서를 단계별로 제안해줘.
-```
+</skill>
