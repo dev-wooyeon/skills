@@ -1,6 +1,3 @@
-<skill>
-<name>technical-writing-pipeline</name>
-<path>$CODEX_HOME/skills/technical-writing-pipeline/SKILL.md</path>
 ---
 name: technical-writing-pipeline
 description: Orchestrate a multi-step technical writing workflow from document type selection to information architecture review and sentence polishing. Use when the user is planning, drafting, or refining a technical document and wants the right sub-skill applied in the right order instead of handling each step manually.
@@ -206,5 +203,3 @@ In those cases, do not pretend later-stage editing is enough.
 - "처음부터 끝까지" -> full pipeline
 - "문장만 다듬어 줘" -> Step 3 only
 - "문서 방향이 맞는지 모르겠다" -> Step 1, then possibly Step 2
-
-</skill>

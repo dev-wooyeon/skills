@@ -1,6 +1,3 @@
-<skill>
-<name>tradeoff-decision</name>
-<path>$CODEX_HOME/skills/tradeoff-decision/SKILL.md</path>
 ---
 name: tradeoff-decision
 description: "Use when comparing technical or structural options and you need a context-aware decision rationale that explains criteria, constraints, risks, and why one choice fits the current situation better than the alternatives."
@@ -69,5 +66,3 @@ ClickHouse와 Redis 비교
 ## 주의할 점
 모든 비교에 만능 정답은 없다.
 기술 유행보다 문제와 제약이 먼저다.
-
-</skill>

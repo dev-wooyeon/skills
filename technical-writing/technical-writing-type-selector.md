@@ -1,6 +1,3 @@
-<skill>
-<name>technical-writing-type-selector</name>
-<path>$CODEX_HOME/skills/technical-writing-type-selector/SKILL.md</path>
 ---
 name: technical-writing-type-selector
 description: Choose the best documentation type and writing approach for a technical writing task. Use when the user wants to decide whether a document should be learning-oriented, problem-solving, reference, or explanatory, or when they need guidance on how to write the chosen type based on goal, audience, project context, and extra constraints.
@@ -215,5 +212,3 @@ $technical-writing-type-selector
 3. 필요하면 보조 유형을 하나만 제안하고
 4. 그 유형에 맞는 작성 시 유의점과 권장 문서 구성을 제안해줘.
 ```
-
-</skill>

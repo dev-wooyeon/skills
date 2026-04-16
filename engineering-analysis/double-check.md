@@ -1,6 +1,3 @@
-<skill>
-<name>double-check</name>
-<path>$CODEX_HOME/skills/double-check/SKILL.md</path>
 ---
 name: double-check
 description: "Use when the task is about execution-based verification: deciding what commands to run, running the smallest meaningful validation gate, summarizing what was confirmed by execution, or explicitly stating what was not run and why."
@@ -48,5 +45,3 @@ Use this skill for requests such as:
 - Do not imply that tests passed when nothing ran.
 - Do not run a broad expensive suite first when a narrower gate would answer the question.
 - Do not hide verification gaps in summary prose.
-
-</skill>

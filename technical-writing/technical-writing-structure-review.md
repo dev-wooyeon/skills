@@ -1,6 +1,3 @@
-<skill>
-<name>technical-writing-structure-review</name>
-<path>$CODEX_HOME/skills/technical-writing-structure-review/SKILL.md</path>
 ---
 name: technical-writing-structure-review
 description: Review and improve the information architecture of a technical document draft or outline. Use when the user provides a draft, table of contents, or rough structure and wants concrete feedback based on single-goal pages, clear overview, predictable hierarchy, value-first introductions, and effective titles.
@@ -213,5 +210,3 @@ When recommending a split, name the proposed child documents explicitly.
 - "제목이 길고 추상적이다" -> tighten around the core keyword and outcome
 - "같은 수준 제목이 서로 다른 역할이다" -> normalize the hierarchy
 - "도입부가 구현 세부사항부터 시작한다" -> move value and outcome first
-
-</skill>

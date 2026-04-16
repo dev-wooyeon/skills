@@ -1,6 +1,3 @@
-<skill>
-<name>problem-structuring</name>
-<path>$CODEX_HOME/skills/problem-structuring/SKILL.md</path>
 ---
 name: problem-structuring
 description: "Use when a problem feels tangled and needs to be broken into symptoms, causes, repeated triggers, impact scope, and solvable areas so the issue can be explained and prioritized clearly."
@@ -69,5 +66,3 @@ description: "Use when a problem feels tangled and needs to be broken into sympt
 ## 주의할 점
 해결책부터 쓰기 시작하면 문제 정의가 흐려진다.
 감정 표현보다 검증 가능한 사실 위주로 정리한다.
-
-</skill>

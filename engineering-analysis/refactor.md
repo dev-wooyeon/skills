@@ -1,6 +1,3 @@
-<skill>
-<name>refactor</name>
-<path>$CODEX_HOME/skills/refactor/SKILL.md</path>
 ---
 name: refactor
 description: "Use when the task is about refactoring or structural cleanup: usage-path tracing, impact analysis, DDD or MSA boundary critique, external contract mapping, anti-corruption layer decisions, refactor sequencing, or migration and cleanup roadmaps."
@@ -59,5 +56,3 @@ Use this skill for requests such as:
 - Do not approve a design just because it is faster to ship.
 - Do not give a refactor plan without tracing current usage first.
 - Do not blur confirmed findings with assumptions.
-
-</skill>

@@ -1,6 +1,3 @@
-<skill>
-<name>git-analysis</name>
-<path>$CODEX_HOME/skills/git-analysis/SKILL.md</path>
 ---
 name: git-analysis
 description: "Use when the task is centered on git history or changes: staged or unstaged diff review, recent commit analysis, author-filtered commit reports, commit message or branch name suggestion, PR title or PR body drafting, or repo-history-aligned wording for engineering artifacts."
@@ -80,5 +77,3 @@ When drafting commit or PR text:
 - Do not write commit or PR text before checking repo history.
 - Do not give a review that is mostly summary.
 - Do not claim tests passed unless they were actually run.
-
-</skill>

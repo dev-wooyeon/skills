@@ -1,6 +1,3 @@
-<skill>
-<name>technical-writing-sentence-polish</name>
-<path>$CODEX_HOME/skills/technical-writing-sentence-polish/SKILL.md</path>
 ---
 name: technical-writing-sentence-polish
 description: Improve the clarity, brevity, and consistency of technical writing at the sentence level. Use when the user provides one or more sentences from a technical document and wants direct feedback plus a stronger final rewrite based on concision, reduced meta discourse, concrete wording, consistent terminology, and clear human subjects.
@@ -203,5 +200,3 @@ Better:
 ```text
 이 API를 호출할 때는 요청 헤더와 인증 정보를 함께 포함하세요. 그래야 서버가 요청을 인증하고 정상 응답을 반환합니다.
 ```
-
-</skill>
